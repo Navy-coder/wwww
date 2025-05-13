@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверь себя - образовательные тесты</title>
+    <link rel="stylesheet" href="css.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><span class="logo-icon">📚</span> Проверь себя</h1>
+            <p>Тестируй свои знания в разных предметах</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">О проекте</a></li>
+                <li><a href="#tests">Тесты</a></li>
+                <li><a href="#results">Результаты</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="about" class="section-about">
+        <div class="container">
+            <h2>Добро пожаловать!</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Этот сайт создан для проверки ваших знаний по основным школьным предметам. Вы можете пройти тесты по русскому языку, математике и информатике, оценить свой уровень и узнать, какие темы стоит повторить.</p>
+                    <p>Все тесты составлены профессиональными педагогами и соответствуют школьной программе.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/400x300" alt="Обучение" class="animated-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tests" class="section-tests">
+        <div class="container">
+            <h2>Выберите предмет для тестирования</h2>
+            <div class="test-cards">
+                <div class="test-card" onclick="startTest('russian')">
+                    <div class="card-icon" style="background-color: #ff6b6b;">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Русский язык</h3>
+                    <p>Проверьте свою грамотность и знание правил русского языка</p>
+                    <button class="btn-start">Начать тест</button>
+                </div>
+
+                <div class="test-card" onclick="startTest('math')">
+                    <div class="card-icon" style="background-color: #4ecdc4;">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Математика</h3>
+                    <p>Решите задачи разного уровня сложности</p>
+                    <button class="btn-start">Начать тест</button>
+                </div>
+
+                <div class="test-card" onclick="startTest('it')">
+                    <div class="card-icon" style="background-color: #45aaf2;">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Информатика</h3>
+                    <p>Тест на знание основ программирования и компьютерной грамотности</p>
+                    <button class="btn-start">Начать тест</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="test-container" class="hidden">
+        <div class="container">
+            <div class="test-header">
+                <h2 id="test-title">Тест по русскому языку</h2>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                    <span id="progress-text">1/10</span>
+                </div>
+            </div>
+
+            <div class="question-container" id="question-container">
+                <!-- Вопросы будут загружаться здесь динамически -->
+            </div>
+
+            <div class="test-navigation">
+                <button id="btn-prev" class="btn-nav" disabled><i class="fas fa-arrow-left"></i> Назад</button>
+                <button id="btn-next" class="btn-nav">Далее <i class="fas fa-arrow-right"></i></button>
+                <button id="btn-finish" class="btn-finish hidden">Завершить тест</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="results" class="section-results hidden">
+        <div class="container">
+            <h2>Результаты тестирования</h2>
+            <div class="result-card">
+                <h3 id="result-title">Тест по русскому языку</h3>
+                <div class="result-score">
+                    <div class="score-circle">
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring__circle" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                        </svg>
+                        <span id="score-percent">0%</span>
+                    </div>
+                    <div class="score-text">
+                        <p>Вы ответили правильно на <span id="score-correct">0</span> из <span id="score-total">10</span> вопросов</p>
+                        <p id="score-message">Попробуйте еще раз!</p>
+                    </div>
+                </div>
+                <div class="result-details">
+                    <h4>Рекомендации:</h4>
+                    <ul id="recommendations">
+                        <!-- Рекомендации будут загружаться здесь -->
+                    </ul>
+                </div>
+                <button class="btn-restart" onclick="restartTest()">Пройти еще раз</button>
+                <button class="btn-other-test" onclick="showTestSelection()">Выбрать другой тест</button>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Проверь себя</h3>
+                    <p>Образовательные тесты для школьников и студентов</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-envelope"></i> info@prover-sebya.ru</p>
+                    <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Мы в соцсетях</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Проверь себя. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="ppscript.js"></script>
+</body>
+</html>
